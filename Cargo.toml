@@ -1,6 +1,6 @@
 [package]
 name = "openrouter-free"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "A fast CLI tool to browse free models on OpenRouter"
 homepage = "https://github.com/i-rs/openrouter-free"
