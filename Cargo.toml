@@ -2,6 +2,11 @@
 name = "openrouter-free"
 version = "0.1.0"
 edition = "2024"
+description = "A fast CLI tool to browse free models on OpenRouter"
+homepage = "https://github.com/i-rs/openrouter-free"
+repository = "https://github.com/i-rs/openrouter-free"
+license = "MIT"
+keywords = ["openrouter", "cli", "llm", "ai"]
 
 [dependencies]
 reqwest = { version = "0.12", features = ["json"] }
@@ -16,3 +21,8 @@ opt-level = "z"
 lto = "thin"
 codegen-units = 1
 strip = true
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

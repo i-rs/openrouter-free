@@ -9,21 +9,25 @@ A fast CLI tool to browse and filter free models available on [OpenRouter](https
 - Filter to show only free models or all models
 - Output in table format or JSON
 - Fast and lightweight (Rust)
+- Cross-platform binaries (macOS, Linux, Windows)
 
-## Installation
-
-### From Source
+## Quick Install
 
 ```bash
-git clone https://github.com/your-username/openrouter-free.git
-cd openrouter-free
-cargo build --release
-./target/release/openrouter-free --help
+# macOS / Linux
+curl -L https://github.com/i-rs/openrouter-free/releases/latest/download/openrouter-free-installer.sh | sh
+
+# Windows PowerShell
+irm https://github.com/i-rs/openrouter-free/releases/latest/download/openrouter-free-installer.ps1 | iex
+
+# npm
+npm install -g openrouter-free
+
+# Homebrew
+brew install i-rs/openrouter-free/openrouter-free
 ```
 
-### Binary
-
-Download pre-built binaries from the [Releases](https://github.com/your-username/openrouter-free/releases) page.
+See [Installation Guide](docs/installation.md) for more options.
 
 ## Usage
 
@@ -114,6 +118,12 @@ GET https://openrouter.ai/api/v1/models
 
 Free models are identified by the `:free` suffix in the model ID (e.g., `google/gemma-4-26b-a4b-it:free`).
 
+## Documentation
+
+- [Installation Guide](docs/installation.md) - All installation methods
+- [Development Guide](docs/development.md) - Setting up dev environment
+- [Release Guide](docs/release.md) - Publishing new releases
+
 ## Requirements
 
 - Rust 1.75+
@@ -122,3 +132,4 @@ Free models are identified by the `:free` suffix in the model ID (e.g., `google/
 ## License
 
 MIT
+
