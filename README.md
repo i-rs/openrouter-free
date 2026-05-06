@@ -22,9 +22,6 @@ irm https://github.com/i-rs/openrouter-free/releases/latest/download/openrouter-
 
 # npm
 npm install -g openrouter-free
-
-# Homebrew
-brew install i-rs/openrouter-free/openrouter-free
 ```
 
 See [Installation Guide](docs/installation.md) for more options.

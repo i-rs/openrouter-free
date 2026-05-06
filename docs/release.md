@@ -33,10 +33,9 @@ git push origin v0.2.0
 The release workflow will automatically:
 
 1. Build binaries for all platforms
-2. Generate installers (shell, powershell, npm, homebrew)
+2. Generate installers (shell, powershell, npm)
 3. Create GitHub Release
 4. Publish to npm (if configured)
-5. Update Homebrew formula (if configured)
 
 ## Local Testing
 
@@ -67,9 +66,11 @@ sh target/dist/*/openrouter-free-installer.sh
 
 ### Required Secrets
 
+No secrets required for basic releases. For npm publishing:
+
 | Secret | Description | Required For |
 |--------|-------------|--------------|
-| `HOMEBREW_TAP_TOKEN` | GitHub token with push access to tap repo | Homebrew publishing |
+| `NPM_TOKEN` | npm token with publish access | npm publishing |
 
 ### Environment Variables
 
@@ -78,7 +79,6 @@ The workflow uses these from `dist-workspace.toml`:
 - `cargo-dist-version`: dist tool version
 - `targets`: build platforms
 - `installers`: generated installer types
-- `tap`: Homebrew tap repository
 
 ### Manual npm Publishing
 
@@ -104,12 +104,6 @@ npm publish ./target/dist/npm/openrouter-free-*.tgz
 1. Check Rust toolchain: `rustup update`
 2. Verify targets installed: `rustup target list`
 3. Add missing targets: `rustup target add aarch64-apple-darwin`
-
-### Homebrew Formula Not Updated
-
-1. Verify `HOMEBREW_TAP_TOKEN` secret exists in repo settings
-2. Check token has `repo` scope
-3. Verify tap repository exists and is accessible
 
 ### npm Package Not Published
 
