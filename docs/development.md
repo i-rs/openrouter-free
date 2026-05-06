@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Rust 1.75+
+- Rust 1.85+ (edition 2024 requires recent Rust)
 - cargo
 - Git
 
@@ -12,6 +12,18 @@
 git clone https://github.com/i-rs/openrouter-free.git
 cd openrouter-free
 cargo build
+```
+
+## Dependencies
+
+```toml
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+indicatif = "0.18.4"
+reqwest = { version = "0.13.3", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.40", features = ["rt-multi-thread", "macros"] }
 ```
 
 ## Development Workflow
@@ -52,31 +64,14 @@ openrouter-free/
 ├── .github/
 │   └── workflows/
 │       └── release.yml  # CI/CD pipeline
+├── .trae/
+│   └── skills/
+│       └── openrouter-llm/
+│           └── SKILL.md # Trae AI skill
 └── docs/
     ├── installation.md  # Installation guide
     ├── release.md       # Release process
     └── development.md   # This file
-```
-
-## Adding Dependencies
-
-Edit `Cargo.toml`:
-
-```toml
-[dependencies]
-reqwest = { version = "0.12", features = ["json"] }
-# Add new deps here
-```
-
-## cargo-dist Configuration
-
-Edit `dist-workspace.toml`:
-
-```toml
-[dist]
-cargo-dist-version = "0.31.0"
-targets = ["aarch64-apple-darwin", "x86_64-apple-darwin"]
-installers = ["shell", "powershell", "npm", "homebrew"]
 ```
 
 ## Common Tasks
@@ -100,6 +95,17 @@ Update `OPENROUTER_API_URL` constant:
 
 ```rust
 const OPENROUTER_API_URL: &str = "https://openrouter.ai/api/v1/models";
+```
+
+## cargo-dist Configuration
+
+Edit `dist-workspace.toml`:
+
+```toml
+[dist]
+cargo-dist-version = "0.31.0"
+targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "aarch64-unknown-linux-gnu", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+installers = ["shell", "powershell", "npm"]
 ```
 
 ## Performance Optimization
