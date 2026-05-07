@@ -58,9 +58,8 @@ cargo clippy
 openrouter-free/
 ├── src/
 │   └── main.rs          # Main application
-├── Cargo.toml           # Dependencies
+├── Cargo.toml           # Dependencies & cargo-dist config
 ├── Cargo.lock           # Locked dependencies
-├── dist-workspace.toml  # cargo-dist configuration
 ├── .github/
 │   └── workflows/
 │       └── release.yml  # CI/CD pipeline
@@ -99,13 +98,16 @@ const OPENROUTER_API_URL: &str = "https://openrouter.ai/api/v1/models";
 
 ## cargo-dist Configuration
 
-Edit `dist-workspace.toml`:
+Edit `[workspace.metadata.dist]` in `Cargo.toml`:
 
 ```toml
-[dist]
+[workspace.metadata.dist]
 cargo-dist-version = "0.31.0"
-targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "aarch64-unknown-linux-gnu", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+ci = "github"
 installers = ["shell", "powershell", "npm"]
+targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "aarch64-unknown-linux-gnu", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+install-path = "CARGO_HOME"
+install-updater = false
 ```
 
 ## Performance Optimization
